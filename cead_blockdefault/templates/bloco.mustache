@@ -1,0 +1,57 @@
+<script>
+function carregar() {
+    removerBarra();
+}
+
+function removeAllChildNodes(parent) {
+    while (parent.firstChild) {
+        parent.removeChild(parent.firstChild);
+    }
+}
+
+function removerBarra() {
+    var bloco = document.getElementById('ceadAcessibilidade').cloneNode(true);
+    removeAllChildNodes(document.getElementById('topofscroll'));
+    document.getElementById('topofscroll').appendChild(bloco);
+    document.getElementsByTagName('nav')[0].style.display = "None";
+    document.getElementById('page-header').style.display = "None";
+    document.getElementsByClassName('logo mr-1')[0].style.display = "None";
+    document.getElementsByClassName('primary-navigation')[0].style.display = "None";
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
+<script>
+    import EditorJS from '@editorjs/editorjs';
+    const editor = new EditorJS();
+</script>
+<div class="ceadAcessibilidade" style="width:100%;height:100%;">
+<div>
+    <p><b>SUAS DISCIPLINAS</b></p>
+    {{{disciplinas}}}
+    {{#atividades}}
+        <p><b>SUAS PRÓXIMAS ATIVIDADES__:</b></p>
+        {{{atividades}}}
+    {{/atividades}}
+</div>
+<div>
+<p><b>EMAILS DUPLICADOS:</b></p>
+    {{{emailsDuplicados}}}
+    <div>
+</div>
+<p></p>
+<p><b>CAIXA DE TEXTO:</b></p>
+<textarea id="textEditor" style="width:100%;height:100%;">
+Texto de teste
+</textarea>
+</div>
+</div>
+
+<!-- <div>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/awA_Lu2YY2o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+</div> -->
+<script>
+    carregar();
+</script>
+{{#js}}
+    alert('Foi!');
+{{/js}}
